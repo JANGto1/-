@@ -1,5 +1,5 @@
 import React,{ Component, createRef } from 'react';
-import Try from './Try'
+import Try from './TryClass'
 
 function getNumbers() { // 숫자 4개를 겹치지 않고 랜덤하게 뽑는 횟수
   const candidate = [1,2,3,4,5,6,7,8,9];
@@ -80,11 +80,12 @@ class NumberBaseball extends Component {
   inputRef = createRef(); // this.inputRef
 
   render() {
-    const { result, value, tries } = this.state;
+    const { result, value, tries } = this.state; // 구조분해로 this.state를 지울 수 있다.
+    const {onSubmitForm} = this;
     return (
       <>
         <h1>{result}</h1>
-        <form onSubmit={this.onSubmitForm}>
+        <form onSubmit={onSubmitForm}>
           <input ref={this.inputRef} maxLength={4} value={value} onChange={this.onChangeInput} />
         </form>
         <div>시도: {tries.length}</div>
